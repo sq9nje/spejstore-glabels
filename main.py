@@ -36,6 +36,7 @@ async def preview_labe(label_id):
     csv = tempfile.NamedTemporaryFile(prefix="spejstore_")
     try:
         csv.write(get_label_csv(label))
+        csv.seek(0)
         filename = "{}.pdf".format(csv.name)
         glabels_command = "glabels-3-batch -i {} -o {}.pdf {}".format(csv.name, filename, label_template)
         os.system(glabels_command)
