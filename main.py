@@ -38,11 +38,11 @@ async def preview_labe(label_id):
         csv.write(get_label_csv(label))
         csv.seek(0)
         filename = "{}.pdf".format(csv.name)
-        glabels_command = "glabels-3-batch -i {} -o {}.pdf {}".format(csv.name, filename, label_template)
+        glabels_command = "glabels-3-batch -i {} -o {} {}".format(csv.name, filename, label_template)
         os.system(glabels_command)
     finally:
         csv.close()
-    return FileResponse(path=filename)
+        return FileResponse(path=filename)
 
 @app.post("/api/1/print/{label_id}")
 async def print_label(label_id):
