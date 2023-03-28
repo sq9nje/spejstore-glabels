@@ -50,11 +50,10 @@ async def print_label(label_id):
     csv = tempfile.NamedTemporaryFile(prefix="spejstore_")
     try:
         csv.write(get_label_csv(label))
+        csv.seek(0)
         glabels_command = "glabels-3-batch -i {} -o {}.pdf {}".format(csv.name, csv.name, label_template)
-        lpr_command = "lpr -P {} -r {}.pdf".format(SPEJSTORE_PRINTER, csv.name)
+        lpr_command = "lp -d {} -t {} {}.pdf".format(SPEJSTORE_PRINTER, label_id, csv.name)
         os.system(glabels_command)
         os.system(lpr_command)
     finally:
         csv.close()
-
-

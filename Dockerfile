@@ -1,7 +1,7 @@
 FROM python:3.11
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends glabels lpr \
+    && apt-get install -y --no-install-recommends glabels cups \
     && apt-get clean
 
 WORKDIR /app

@@ -6,4 +6,4 @@ services:
       - "8001:8001"
     volumes:
       - ./templates:/app/templates
-      - /var/run/cups:/var/run/cups
+      - /run/cups:/run/cups
