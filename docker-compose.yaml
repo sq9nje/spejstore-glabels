@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  labels:
+    build: .
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./templates:/app/templates
+      - /var/run/cups:/var/run/cups
